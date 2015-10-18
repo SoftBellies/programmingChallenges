@@ -87,13 +87,28 @@ S-S-S-+
 +---+->B
     +---^
 `,
+	`
+S-----+
+|     |
++-----+
+`,
+	`
+
+   S
+
+`,
 }
 var outputs = []string{
-	"a", "b", "b", "Q", "A", "B", "Y", "B", "E", "", "", "",
+	"a", "b", "b", "Q", "A", "B", "Y", "B", "E", "", "", "", "", "", "",
 }
 
 var errs = []error{
-	nil, nil, nil, nil, nil, nil, nil, nil, nil, fmt.Errorf("No such starting point"), fmt.Errorf("No such starting point"), fmt.Errorf("Multiple starting points"),
+	nil, nil, nil, nil, nil, nil, nil, nil, nil,
+	fmt.Errorf("No such starting point"),
+	fmt.Errorf("No such starting point"),
+	fmt.Errorf("Multiple starting points"),
+	fmt.Errorf("Nothing to do, cannot continue"),
+	fmt.Errorf("Nothing to do, cannot continue"),
 }
 
 func ExampleResolver_a() {
