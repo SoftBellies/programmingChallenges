@@ -2,3 +2,7 @@
 	path = Where-is-the-Arrow-Pointing/moul
 	url = https://github.com/moul/witap
 	branch = master
+[submodule "Where-is-the-Arrow-Pointing/zigazou"]
+	path = Where-is-the-Arrow-Pointing/zigazou
+	url = https://github.com/Zigazou/ArrowPointing
+	branch = master
