@@ -24,8 +24,6 @@ echo "\n".file_get_contents('./input.txt')."\nLe départ est aux positions ".$ma
 
 $previousX=-1; // Contiendra l'ordonnée de la position précédente. (pour le moment, une valeur incohérente)
 $previousY=-1; // Contiendra l'absycede la position précédente. (pour le moment, une valeur incohérente)
-$xMax=count($map[0]) -1;
-$yMax=count($map) -1;
 $previousCrosses=array(); //On ne gardera en mémoire que les croisements, pas l'ensemble du chemin.
 
 while(1==1){ // C'est un défi de codagee, pas un script qui sera en prod. j'assume.
@@ -122,7 +120,7 @@ function wheAreOnAnArrow($arrow){
     default:     
       break;
   }
-  if(($targetX <0) OR ($targetY<0) OR ($targetX>$xMax) OR ($targetY>$yMax) OR (in_array($map[$targetY][$targetX],$charsOfTheLoose))){
+  if((!isset($map[$targetY][$targetX])) OR (in_array($map[$targetY][$targetX],$charsOfTheLoose))){
       //on sort du cadre ou on tombe sur un caractere inadapté
       goToPreviousCross();
   }else{
@@ -139,16 +137,20 @@ function wheAreOnAnArrow($arrow){
 function whereToGoAfterCross($xCross,$yCross,$previousX,$previousY){
   
             //haut
-            if(canGoAfterCross($xCross,$yCross +1 ,$xCross,$yCross,$previousX,$previousY)){
-                return array($xCross,$yCross +1);
-            }elseif(canGoAfterCross($xCross,$yCross -1 ,$xCross,$yCross,$previousX,$previousY)){
-                //bas
+            if(canGoAfterCross($xCross,$yCross -1 ,$xCross,$yCross,$previousX,$previousY)){
+		 echo "haut\n";
                 return array($xCross,$yCross -1);
+            }elseif(canGoAfterCross($xCross,$yCross +1 ,$xCross,$yCross,$previousX,$previousY)){
+                //bas
+                 echo "bas\n";
+                return array($xCross,$yCross +1);
             }elseif(canGoAfterCross($xCross-1,$yCross,$xCross,$yCross,$previousX,$previousY)){
                 //gauche
+                 echo "gauche\n";
                 return array($xCross-1,$yCross);
             }elseif(canGoAfterCross($xCross+1,$yCross,$xCross,$yCross,$previousX,$previousY)){
                 //droite
+                 echo "droite\n";
                 return array($xCross+1,$yCross);
             }else{
 	      //pas de direction possible
@@ -157,15 +159,16 @@ function whereToGoAfterCross($xCross,$yCross,$previousX,$previousY){
 }
 
 function canGoAfterCross($xTo,$yTo,$xNow,$yNow,$xPrevious,$yPrevious){
-    global $previousCrosses,$xMax,$yMax,$map;
-    if(($xTo < 0) OR ($yTo < 0) OR ($xTo >= $xMax) OR ($yTo >= $yMax)){return false;}// ça sort des limites de la carte
+    global $previousCrosses,$map;
+    if(!isset($map[$yTo][$xTo])){return false;}// ça sort des limites de la carte
     if(
 	($map[$yTo][$xTo]==" ") // on ne va pas sur un caractere vide
 	OR (($xTo==$xPrevious)&&($yTo==$yPrevious)) //on ne peut pas revenir sur nos pas (enfin, ça ne servirait à rien dans cet algo)
 	OR (($xTo==$xNow)&&($map[$yTo][$xTo]=="-")) //Déplacement vertical, le caractere suivant ne peut etre "-"
 	OR (($yTo==$yNow)&&($map[$yTo][$xTo]=="|")) // Déplacement horizontal, le caractère suivant ne peut être "|"
 	OR ((isset($previousCrosses[$xNow."-".$yNow])) && (in_array($xTo."-".$yTo,$previousCrosses[$xNow."-".$yNow]))) //croisement, ne pas prendre une direction déjà prise
-   ){    
+	OR (preg_match("/^[a-z]$/",strtolower($map[$yTo][$xTo]))) //peut pas tomber sur une lettre direct apres un croisement
+ ){ 
       return false;
     }
     return true;    
@@ -176,7 +179,7 @@ function go($targetX,$targetY){
     if(($map[$y][$x]=='S')OR ($map[$y][$x]=='+')){
         //on enregistre le croisement dans lequel on renseigne la direction prise et la direction d'origine
         $previousCrosses[$x."-".$y][]=$previousX."-".$previousY;
-        $previousCrosses[$x."-".$y][]=$targetX."-".$targetY; 
+        $previousCrosses[$x."-".$y][]=$targetX."-".$targetY;
     }
     $previousX=$x;
     $previousY=$y;
