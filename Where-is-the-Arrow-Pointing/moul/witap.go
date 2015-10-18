@@ -6,7 +6,8 @@ import (
 )
 
 type Resolver struct {
-	Lines []string
+	Lines   []string
+	Tryouts map[Position]bool
 }
 
 type Position struct{ X, Y int }
@@ -18,7 +19,8 @@ func (p *Position) Right() Position { return Position{X: p.X + 1, Y: p.Y} }
 
 func NewResolverFromString(theMap string) Resolver {
 	return Resolver{
-		Lines: strings.Split(theMap, "\n"),
+		Lines:   strings.Split(theMap, "\n"),
+		Tryouts: make(map[Position]bool),
 	}
 }
 
@@ -36,6 +38,10 @@ func (r *Resolver) Run() (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	fmt.Println("===============================")
+	r.PrintMap()
+	fmt.Println("")
 
 	return r.Step(startPos, Position{-1, -1})
 }
@@ -65,13 +71,29 @@ func (r *Resolver) Step(curPos, lastPos Position) (string, error) {
 	if curPos.X < 0 || curPos.Y < 0 || curPos.Y >= len(r.Lines) || curPos.X >= len(r.Lines[curPos.Y]) {
 		return "", fmt.Errorf("Invalid position")
 	}
+	if _, exists := r.Tryouts[curPos]; exists {
+		return "", fmt.Errorf("Location already tried")
+	}
+
+	r.Tryouts[curPos] = true
 
 	letter := r.GetChar(curPos)
 
-	if letter == "S" && lastPos.X != -1 {
-		return "", fmt.Errorf("S must be the first position")
-	} else if letter == "+" && lastPos.X == -1 {
-		return "", fmt.Errorf("Cannot do this symbol after a start")
+	// fmt.Println(curPos, r.GetChar(curPos))
+
+	switch letter {
+	case "S":
+		if lastPos.X != -1 {
+			return "", fmt.Errorf("'S' must be the first position")
+		}
+	case "+":
+		if lastPos.X == -1 {
+			return "", fmt.Errorf("Cannot do this symbol after a start")
+		}
+	case "V", ">", "<", "^":
+		if r.GetChar(lastPos) == "+" {
+			return "", fmt.Errorf("Cannot finish just after a '+'")
+		}
 	}
 
 	switch letter {
