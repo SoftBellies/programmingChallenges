@@ -71,9 +71,29 @@ O<|  |  |>O
 O<|  |  |>O
   +->E<-+
 `,
+	`
+6-----+
+|     +-^
++---+->B
+    +---^
+`,
+	`
+abc
+de
+`,
+	`
+S-S-S-+
+|     +-^
++---+->B
+    +---^
+`,
 }
 var outputs = []string{
-	"a", "b", "b", "Q", "A", "B", "Y", "B", "E",
+	"a", "b", "b", "Q", "A", "B", "Y", "B", "E", "", "", "",
+}
+
+var errs = []error{
+	nil, nil, nil, nil, nil, nil, nil, nil, nil, fmt.Errorf("No such starting point"), fmt.Errorf("No such starting point"), fmt.Errorf("Multiple starting points"),
 }
 
 func ExampleResolver_a() {
@@ -88,7 +108,7 @@ func TestResolver(t *testing.T) {
 			Convey(fmt.Sprintf("input %d", idx+1), func() {
 				resolver := NewResolverFromString(input[1 : len(input)-1])
 				output, err := resolver.Run()
-				So(err, ShouldBeNil)
+				So(err, ShouldResemble, errs[idx])
 				So(output, ShouldEqual, outputs[idx])
 			})
 		}

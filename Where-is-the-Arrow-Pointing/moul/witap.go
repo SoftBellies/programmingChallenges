@@ -25,10 +25,19 @@ func NewResolverFromString(theMap string) Resolver {
 }
 
 func (r *Resolver) GetStartPosition() (Position, error) {
+	var found *Position
 	for y, line := range r.Lines {
-		if pos := strings.Index(line, "S"); pos != -1 {
-			return Position{pos, y}, nil
+		for x, char := range line {
+			if fmt.Sprintf("%c", char) == "S" {
+				if found != nil {
+					return Position{-1, -1}, fmt.Errorf("Multiple starting points")
+				}
+				found = &Position{x, y}
+			}
 		}
+	}
+	if found != nil {
+		return *found, nil
 	}
 	return Position{-1, -1}, fmt.Errorf("No such starting point")
 }
@@ -39,9 +48,9 @@ func (r *Resolver) Run() (string, error) {
 		return "", err
 	}
 
-	fmt.Println("===============================")
-	r.PrintMap()
-	fmt.Println("")
+	// fmt.Println("===============================")
+	// r.PrintMap()
+	// fmt.Println("")
 
 	return r.Step(startPos, Position{-1, -1})
 }
