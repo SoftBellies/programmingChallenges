@@ -9,6 +9,7 @@ Fonction(s) autorisee(s): printchar
 
 Voici un sapin de 1 :
 
+```console
 $> /u/all/astek/public/sapin 1
    *
   ***
@@ -16,9 +17,11 @@ $> /u/all/astek/public/sapin 1
 *******
    |
 $>
+```
 
 Voici un sapin de 5 :
 
+```console
 $> /u/all/astek/public/sapin 5
                    *
                   ***
@@ -56,9 +59,11 @@ $> /u/all/astek/public/sapin 5
                  |||||
                  |||||
 $>
+```
 
 Voici un sapin de 10 :
 
+```
 $> /u/all/astek/public/sapin 10
                                                   *
                                                  ***
@@ -156,3 +161,4 @@ $> /u/all/astek/public/sapin 10
                                              |||||||||||
                                              |||||||||||
 $>
+```
