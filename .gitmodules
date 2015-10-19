@@ -6,7 +6,6 @@
 	path = Where-is-the-Arrow-Pointing/zigazou
 	url = https://github.com/Zigazou/ArrowPointing
 	branch = master
-[submodule "Where-is-the-Arrow-Pointing/gnieark"]
-        path = Where-is-the-Arrow-Pointing/gnieark
-        url = https://github.com/gnieark/Where-is-the-Arrow-Pointing
-        branch = master
+[submodule "Where-is-the-Arrow-Pointing/Where-is-the-Arrow-Pointing"]
+	path = Where-is-the-Arrow-Pointing/Where-is-the-Arrow-Pointing
+	url = https://github.com/gnieark/Where-is-the-Arrow-Pointing.git
