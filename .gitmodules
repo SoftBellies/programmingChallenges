@@ -9,3 +9,7 @@
 [submodule "Where-is-the-Arrow-Pointing/gnieark"]
 	path = Where-is-the-Arrow-Pointing/gnieark
 	url = https://github.com/gnieark/Where-is-the-Arrow-Pointing.git
+[submodule "sapin/moul"]
+	path = sapin/moul
+	url = https://github.com/moul/go-sapin
+	branch = master
