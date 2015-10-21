@@ -13,3 +13,7 @@
 	path = sapin/moul
 	url = https://github.com/moul/go-sapin
 	branch = master
+[submodule "sapin/moebiuseye"]
+	path = sapin/moebiuseye
+	url = https://github.com/moebiuseye/challenge-sapin
+	branch = master
