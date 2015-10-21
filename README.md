@@ -1,5 +1,9 @@
 # programmingChallenges
 just a place to save programming challenges
 # Rules
-* 1) Le winner du challenge choisit le challenge suivant.
-* 2) Si personne n'arrive à résoudre le challenge dans la semaine, son auteur doit nettoyer les toilettes d'Echelle inconnue (qui sont très crades) . Ce sera sa punition pour avoir choisit un sujet trop dur.
+
+1. Chaque lundi soir, le gagnant du concours de rapidité de la session précédente propose un challenge
+2. Le gagnant a le droit de jouer, mais il ne pourra pas gagner le concours de rapidité
+3. Le concours de vitesse se base sur les commits (interdiction d'antidater les commits)
+4. Il est important de respecter le sujet initial, ne pas gérer tous les cas est un malus, rajouter des bonus est ... euh... bah un bonus
+5. Si personne n'arrive à résoudre le challenge dans la semaine, son auteur doit nettoyer les toilettes d'Echelle inconnue (qui sont très crades) . Ce sera sa punition pour avoir choisit un sujet trop dur.
