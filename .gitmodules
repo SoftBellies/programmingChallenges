@@ -11,7 +11,7 @@
 	url = https://github.com/gnieark/Where-is-the-Arrow-Pointing.git
 [submodule "sapin/moul"]
 	path = sapin/moul
-	url = https://github.com/moul/go-sapin
+	url = https://github.com/moul/sapin
 	branch = master
 [submodule "sapin/moebiuseye"]
 	path = sapin/moebiuseye
