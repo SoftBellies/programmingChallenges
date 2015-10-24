@@ -2,31 +2,17 @@
 
 ## rules
 
-Écrire une fonction qui affiche un sapin a l'écran en fonction
-d'une taille donnée. un sapin de 0, n'affiche rien.
-
-votre fonction devra etre prototypee comme suit:
-
-void  sapin(int taille);
-
-Fonction(s) autorisee(s): printchar
-
-Voici un sapin de 1 :
+Écrire une fonction qui affiche un sapin a l'écran en fonction d'une taille donnée.
+Un sapin de 0, n'affiche rien.
 
 ```console
-$> /u/all/astek/public/sapin 1
+$> sapin 1
    *
   ***
  *****
 *******
    |
-$>
-```
-
-Voici un sapin de 5 :
-
-```console
-$> /u/all/astek/public/sapin 5
+$> sapin 5
                    *
                   ***
                  *****
@@ -62,13 +48,7 @@ $> /u/all/astek/public/sapin 5
                  |||||
                  |||||
                  |||||
-$>
-```
-
-Voici un sapin de 10 :
-
-```
-$> /u/all/astek/public/sapin 10
+$> sapin 10
                                                   *
                                                  ***
                                                 *****
