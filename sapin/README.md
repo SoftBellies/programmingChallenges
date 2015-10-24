@@ -1,3 +1,7 @@
+# sapin
+
+## rules
+
 Écrire une fonction qui affiche un sapin a l'écran en fonction
 d'une taille donnée. un sapin de 0, n'affiche rien.
 
@@ -162,3 +166,19 @@ $> /u/all/astek/public/sapin 10
                                              |||||||||||
 $>
 ```
+
+## Author
+
+moul
+
+## Winners
+
+### Speed
+
+1. khajidu
+2. kobajaski
+3. gnieark
+4. zigazou
+5. moebiuseye
+
+moul is off-side for the speed challenge
