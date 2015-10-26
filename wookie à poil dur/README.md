@@ -4,7 +4,7 @@ ATTGC-TTGCT-TGCTA-GCTAG (qui donnera à la fin ATTGCTAG)
 
 et ainsi de suite. Vous voyez le topo. Ensuite, il faut reconstituer la séquence en parcourant le graphe, comme une fleur (ou un jedi, c selon vos goûts).
 
-Par contre, Anakin Skywalker suggère une méthode un peu plus brutasse : un graphe qui répertorie directement les superpositions entre reads. En même temps, une méthode de brutasse, c'est bien Anakin, tiens.
+Par contre, Anakin Skywalker suggère une méthode un peu plus brutasse : un graphe qui répertorie directement les superpositions entre reads. En même temps, une méthode de brutasse, c'est bien Anakin, tiens. Tiens, d'ailleurs il a trouvé une séquence de 1023 bases.
 
 Votre mission, si vous l'acceptez, est donc de faire triompher le côté clair de la force et de reconstituer la séquence du génome du wookie à poil dur à partir de ces petits cacas :
 
