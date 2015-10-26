@@ -4,7 +4,7 @@ Just a place to save programming challenges
 
 # Rules
 
-1. Chaque lundi soir, le gagnant du concours de rapidité de la session précédente propose un challenge
+1. Chaque lundi soir, le gagnant du concours de rapidité de la session précédente propose un challenge. Le dernier achète les bières.
 2. Le gagnant a le droit de jouer, mais il ne pourra pas gagner le concours de rapidité
 3. Le concours de vitesse se base sur les commits (interdiction d'antidater les commits)
 4. Il est important de respecter le sujet initial, ne pas gérer tous les cas est un malus, rajouter des bonus est ... euh... bah un bonus
