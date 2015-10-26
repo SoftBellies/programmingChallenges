@@ -4,7 +4,7 @@ ATTGC-TTGCT-TGCTA-GCTAG (qui donnera à la fin ATTGCTAG)
 
 et ainsi de suite. Vous voyez le topo.
 
-Votre mission, si vous l'acceptez, est donc de faire triompher le côté clair de la force et de reconstituer la séquence du génome du wookie à poil dur à partir de ça :
+Votre mission, si vous l'acceptez, est donc de faire triompher le côté clair de la force et de reconstituer la séquence du génome du wookie à poil dur à partir de ces petits cacas :
 
     AAAAACAAAAGAAAATAAAC
     AAGCAAAGGAAAGTAAA
