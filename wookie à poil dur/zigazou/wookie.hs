@@ -1,7 +1,6 @@
 module Main where
 import System.Environment (getArgs)
-import qualified Data.Text as T
-import qualified Data.Text.IO as TIO
+import qualified Data.ByteString.Char8 as B
 import Data.Set (Set, notMember, delete, toList, fromList)
 import qualified Data.Set as Set
 import Data.Maybe (catMaybes)
@@ -9,7 +8,7 @@ import Data.Maybe (catMaybes)
 {-|
 A `Reads` is a bit of a sequence
 -}
-type Reads = T.Text
+type Reads = B.ByteString
 
 {-|
 A `Sequence` contains a `List` of `Reads` and a `Set` of available `Reads` that
@@ -23,15 +22,15 @@ Assemble a `List` of `Reads` into a `Text`.
 
     assemble' ["abcd", "cdefg", "fghi"] = "abcdefghi"
 -}
-assemble' :: [Reads] -> T.Text
-assemble' [] = T.empty
+assemble' :: [Reads] -> B.ByteString
+assemble' [] = B.empty
 assemble' [b] = b
-assemble' (a:b:rs) = T.append (T.dropEnd (coincide a b) a) (assemble' (b:rs))
+assemble' (a:b:rs) = B.append (B.take (B.length a - coincide a b) a) (assemble' (b:rs))
 
 {-|
 Assemble the `List` of `Reads` of a `Sequence` into a `Text`.
 -}
-assemble :: Sequence -> T.Text
+assemble :: Sequence -> B.ByteString
 assemble = assemble' . inits
 
 {-|
@@ -41,9 +40,9 @@ second `Reads` and returns its length.
     coincide "abcde" "cdefgh" = 3
 -}
 coincide :: Reads -> Reads -> Int
-coincide a b | a `T.isPrefixOf` b = T.length a
-             | T.null a = 0
-             | otherwise = coincide (T.tail a) b
+coincide a b | a `B.isPrefixOf` b = B.length a
+             | B.null a = 0
+             | otherwise = coincide (B.tail a) b
 
 {-|
 Returns `True` if the `Sequence` is complete. A `Sequence` is complete if there
@@ -103,9 +102,9 @@ loopUntilComplete f ss | any complete ss' = ss'
 main :: IO ()
 main = do
     (seqFile:_) <- getArgs
-    content <- TIO.readFile seqFile
-    let rs = T.lines content
+    content <- B.readFile seqFile
+    let rs = B.lines content
         starts = initSequences (fromList rs)
         solutions = loopUntilComplete nexts starts
 
-    putStrLn . T.unpack . assemble . head $ solutions
+    putStrLn . B.unpack . assemble . head $ solutions
