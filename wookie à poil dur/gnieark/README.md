@@ -1,4 +1,5 @@
 malheureusement je trouve 3 séquences que je n'arrive pas à diminuer plus:
+```
 Array
 (
     [0] => AAGTGAAGTTAATACAATAGAAT
@@ -6,3 +7,4 @@ Array
     [2] => AAAAACAAAAGAAAATAAACCTGACCTTACGAGACGATACGCCACGCG
 )
 
+```
