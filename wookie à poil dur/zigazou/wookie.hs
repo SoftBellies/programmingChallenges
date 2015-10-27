@@ -1,7 +1,8 @@
+{-# LANGUAGE TemplateHaskell #-}
 module Main where
 import System.Environment (getArgs)
 import qualified Data.ByteString.Char8 as B
-import Data.Set (Set, notMember, delete, toList, fromList)
+import Data.Set (Set, delete, toList, fromList)
 import qualified Data.Set as Set
 import Data.Maybe (catMaybes)
 
@@ -12,7 +13,8 @@ type Reads = B.ByteString
 
 {-|
 A `Sequence` contains a `List` of `Reads` and a `Set` of available `Reads` that
-have not yet been included in the sequence.
+have not yet been included in the sequence. Optimization: inits is a reverse
+`List`, thus adding an element or getting the last element is O(1).
 -}
 data Sequence = Sequence { inits :: [Reads], remains :: Set Reads }
                 deriving (Eq, Show)
@@ -25,13 +27,14 @@ Assemble a `List` of `Reads` into a `Text`.
 assemble' :: [Reads] -> B.ByteString
 assemble' [] = B.empty
 assemble' [b] = b
-assemble' (a:b:rs) = B.append (B.take (B.length a - coincide a b) a) (assemble' (b:rs))
+assemble' (a:b:rs) = B.append (B.take (B.length a - coincide a b) a)
+                              (assemble' (b:rs))
 
 {-|
 Assemble the `List` of `Reads` of a `Sequence` into a `Text`.
 -}
 assemble :: Sequence -> B.ByteString
-assemble = assemble' . inits
+assemble = assemble' . reverse . inits
 
 {-|
 Search for the longest suffix of a first `Reads` which is also the prefix of a
@@ -52,11 +55,11 @@ complete :: Sequence -> Bool
 complete = Set.null . remains
 
 {-|
-Returns `True` if the `Sequence` is invalid. A `Sequence` is invalid if it is not
-complete and there is no `Reads` from the remaining ones that can be added.
+Returns `True` if the `Sequence` is valid. A `Sequence` is valid if it is
+complete or if there is `Reads` from the remaining ones that can be added.
 -}
-invalid :: Sequence -> Bool
-invalid s = not (complete s) && null (next s)
+valid :: Sequence -> Bool
+valid s = complete s || next s /= []
 
 {-|
 Initializes a `List` of `Sequence` with each `Reads` from a `Set`.
@@ -65,14 +68,13 @@ initSequences :: Set Reads -> [Sequence]
 initSequences sr = [ Sequence [r] (delete r sr) | r <- toList sr ]
 
 {-|
-Try to add a `Reads` to a `Sequence`. If the `Reads` is not a member of the `Set`
-of remaining `Reads` or it does not coincide with the last `Reads` of the
+Try to add a `Reads` to a `Sequence`. The `Reads` must be a member of remaining
+`Reads`. If the `Reads` does not coincide with the last `Reads` of the
 `Sequence`, it returns `Nothing`. The `Reads` must with at least 3 characters.
 -}
 (-+-) :: Sequence -> Reads -> Maybe Sequence
 (-+-) (Sequence is sr) r
-        | notMember r sr = Nothing
-        | coincide (last is) r > 2 = Just (Sequence (is ++ [r]) (delete r sr))
+        | coincide (head is) r > 2 = Just (Sequence (r:is) (delete r sr))
         | otherwise = Nothing
 
 {-|
@@ -88,7 +90,7 @@ Given a `List` of `Sequence`, returns a `List` of `Sequence` with one more
 of the resulting `List`.
 -}
 nexts :: [Sequence] -> [Sequence]
-nexts = filter (not . invalid) . concatMap next
+nexts = filter valid . concatMap next
 
 {-|
 Repeat the `nexts` action until there is a complete `Sequence`.
