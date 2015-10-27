@@ -2,7 +2,7 @@
 
 $reads=explode("\n",file_get_contents("input.txt"));
 
-while(count($reads)>0){
+while(count($reads)>1){
     $couples=array();
     for($countGauche=0;$countGauche<count($reads);$countGauche++){
     //tester à gauche
