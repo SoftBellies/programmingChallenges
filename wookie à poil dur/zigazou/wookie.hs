@@ -1,10 +1,10 @@
-{-# LANGUAGE TemplateHaskell #-}
 module Main where
 import System.Environment (getArgs)
 import qualified Data.ByteString.Char8 as B
 import Data.Set (Set, delete, toList, fromList)
 import qualified Data.Set as Set
 import Data.Maybe (catMaybes)
+import Data.List (find)
 
 {-|
 A `Reads` is a bit of a sequence
