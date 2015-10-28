@@ -7,6 +7,12 @@ import Data.Maybe (catMaybes)
 import Data.List (find)
 
 {-|
+Taille minimum pour le recouvrement des `Reads`
+-}
+minbase :: Int
+minbase = 3
+
+{-|
 A `Reads` is a bit of a sequence
 -}
 type Reads = B.ByteString
@@ -74,7 +80,7 @@ Try to add a `Reads` to a `Sequence`. The `Reads` must be a member of remaining
 -}
 (-+-) :: Sequence -> Reads -> Maybe Sequence
 (-+-) (Sequence is sr) r
-        | coincide (head is) r > 2 = Just (Sequence (r:is) (delete r sr))
+        | coincide (head is) r >= minbase = Just (Sequence (r:is) (delete r sr))
         | otherwise = Nothing
 
 {-|
@@ -86,11 +92,10 @@ next s@(Sequence _ sr) = catMaybes [ s -+- r | r <- toList sr ]
 
 {-|
 Given a `List` of `Sequence`, returns a `List` of `Sequence` with one more
-`Reads` added from the remaining `Reads`. Invalid `Sequence` are filtered out
-of the resulting `List`.
+`Reads` added from the remaining `Reads`.
 -}
 nexts :: [Sequence] -> [Sequence]
-nexts = filter valid . concatMap next
+nexts = concatMap next
 
 {-|
 Repeat the `nexts` action until there is a complete `Sequence`.
