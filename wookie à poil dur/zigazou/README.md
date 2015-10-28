@@ -89,3 +89,59 @@ Ce comportement peut être changé en modifiant `minbase`.
 
 L’algorithme fonctionne uniquement s’il existe au moins une solution utilisant
 tous les morceaux.
+
+Optimisation
+------------
+
+Quelques optimisations ont été appliquées sur le code de `wookie.hs`.
+
+### ByteString ###
+
+Tout d’abord, des `ByteString` sont utilisées. Elles permettent de recourir à
+des fonctions de complexité O(1) pour la plupart.
+
+### Liste inversée ###
+
+La structure contenant les couples `(pièces utilisées, pièces restantes)`
+utilise une `List` inversée pour les pièces utilisées. C’est-à-dire que la
+suite `[abcd, cdef, efgh]` est stockée sous la forme `[efgh, cdef, abcd]`. Cela
+permet de lire le dernier élément de la liste ou d’ajouter un nouvel élément
+en O(1).
+
+### Pièces restantes ###
+
+La structure contenant les couples `(pièces utilisées, pièces restantes)`
+utilise un `Set` pour les pièces restantes. Cela permet de supprimer des
+pièces en O(log n).
+
+### Coincide ###
+
+La fonction la plus utilisée et la plus consommatrice de `wookie.hs` est la
+fonction `coincide` :
+
+    COST CENTRE MODULE  %time %alloc
+
+    coincide    Main     89.3   92.8
+    next        Main      5.9    6.5
+    -+-         Main      4.3    0.5
+
+                                                                    individual     inherited
+    COST CENTRE               MODULE                  no.     entries  %time %alloc   %time %alloc
+
+    MAIN                      MAIN                     49           0    0.0    0.0   100.0  100.0
+     main                     Main                     99           0    0.0    0.0   100.0  100.0
+      main.solutions          Main                    106           1    0.0    0.0   100.0  100.0
+       loopUntilComplete      Main                    107          47    0.2    0.0   100.0  100.0
+        complete              Main                    116           0    0.1    0.0     0.1    0.0
+         remains              Main                    117      376104    0.0    0.0     0.0    0.0
+        loopUntilComplete.ss' Main                    108          47    0.0    0.0    99.7  100.0
+         nexts                Main                    110           0    0.2    0.1    99.7  100.0
+          next                Main                    111      376150    5.9    6.5    99.5   99.9
+           -+-                Main                    112     9764492    4.3    0.5    93.6   93.3
+            coincide          Main                    113   276308151   89.3   92.8    89.3   92.8
+      main.starts             Main                    104           1    0.0    0.0     0.0    0.0
+       initSequences          Main                    105           1    0.0    0.0     0.0    0.0
+      main.rs                 Main                    103           1    0.0    0.0     0.0    0.0
+      assemble                Main                    101           0    0.0    0.0     0.0    0.0
+
+Elle serait donc la fonction à optimiser pour encore améliorer la vitesse :o)

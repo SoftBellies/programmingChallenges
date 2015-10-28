@@ -4,7 +4,6 @@ import qualified Data.ByteString.Char8 as B
 import Data.Set (Set, delete, toList, fromList)
 import qualified Data.Set as Set
 import Data.Maybe (catMaybes)
-import Data.List (find)
 
 {-|
 Taille minimum pour le recouvrement des `Reads`
