@@ -1,6 +1,15 @@
-Le génome du wookie à poil dur vient d'être séquencé. Malheureusement, le séquenceur est une merde monumentale, conçue par nul autre que l'empereur Palpatine, qui est connu pour concevoir des merdes. Demandez à Dark Vador. Je m'égare. Le séquenceur a donc sorti des séquences absolument riquiqui et inexploitables. Heureusement, vous êtes là. Vous avez entendu parler d'une méthode hyper connue chez les bioinformaticiens : le graphe de De Bruijn. Elle consiste à découper les reads (vous savez les petits cacas que le séquenceur de Palpy prend pour des séquences) en morceaux chevauchants de taille k (k-mers dans l'intimité) et à tracer un graphe qui relie deux k-mers s'ils coïncident sur k-1 bases, comme suit :
+# wookie à poil dur
 
+**Le génome du wookie à poil dur vient d'être séquencé.**
+
+Malheureusement, le séquenceur est une merde monumentale, conçue par nul autre que l'empereur Palpatine, qui est connu pour concevoir des merdes. Demandez à Dark Vador. Je m'égare. Le séquenceur a donc sorti des séquences absolument riquiqui et inexploitables. Heureusement, vous êtes là.
+
+Vous avez entendu parler d'une méthode hyper connue chez les bioinformaticiens : le graphe de De Bruijn.
+Elle consiste à découper les reads (vous savez les petits cacas que le séquenceur de Palpy prend pour des séquences) en morceaux chevauchants de taille k (k-mers dans l'intimité) et à tracer un graphe qui relie deux k-mers s'ils coïncident sur k-1 bases, comme suit :
+
+```
 ATTGC-TTGCT-TGCTA-GCTAG (qui donnera à la fin ATTGCTAG)
+```
 
 et ainsi de suite. Vous voyez le topo. Ensuite, il faut reconstituer la séquence en parcourant le graphe, comme une fleur (ou un jedi, c selon vos goûts).
 
@@ -57,12 +66,15 @@ Votre mission, si vous l'acceptez, est donc de faire triompher le côté clair d
     TTGACTTTAGAGCAGAGGAGAGTAG
     TTGTATTTCATTTGATTTTCCCCCGCCCCTCCC
 
-Que la force soit avec vous !
+**Que la force soit avec vous !**
 
-Les gagnants du challenge, dans l'ordre :
+---
 
-zigazou
-moul
+## Winners
 
+Les gagnants du challenge de rapidité, dans l'ordre :
+
+1. zigazou
+2. moul
 
 Anakin Skywalker (hors concours)
