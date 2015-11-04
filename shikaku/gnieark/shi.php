@@ -15,7 +15,6 @@ function shikakugen($largeur,$hauteur,$nbeCarres){
     //tirer en random l'aire de chaque carré
     $aireRestante=$largeur * $hauteur;
     for($i=1;$i<$nbeCarres;$i++){
-	
 	$aireOK=false;
 	while($aireOK==false){
 	  $aire=rand(2,$aireRestante - $nbeCarres + $i);
@@ -24,21 +23,25 @@ function shikakugen($largeur,$hauteur,$nbeCarres){
 	  if((in_array($aire,array(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97))) 
 	      && ($aire>$largeur) 
 	      && ($aire>$hauteur)){
-	      //c'est un nombre premier don le seul carré posssible aura un coté =1 et l'autre coté= aire. si ce dernier coté est supérieur
-	      //aux cotés de la grille, on ne pourra jamais le placer.
-		$aireOK=false;
+	      /* 
+	      * C'est un nombre premier, donc le seul carré posssible aura un coté =1 et l'autre coté= aire. 
+	      * si ce dernier coté est supérieur aux cotés de la grille, on ne pourra jamais le placer.
+	      */
+	      $aireOK=false;
 	  }
         }
         $aireParCarre[]=$aire;
         $aireRestante=$aireRestante-$aire;
+        //on remplit un passage un array contenant les diviseurs possibles de l'aire.
         $diviseurs[$aire]=trouveDiviseurs($aire);
-        
     }
-    //le dernier carré
-    if($aireRestante < 2){goto a;}
+    
+    //le dernier carré prend l'aire restante
+    if($aireRestante < 2){goto a;}//dans les regles de zigazou, carré de taille 1 interdit
     $aireParCarre[]=$aireRestante;
     $diviseurs[$aireRestante]=trouveDiviseurs($aireRestante);
     shuffle($aireParCarre);
+    
     foreach($aireParCarre as $carre){
         //chercher la première position x,y libre
         for($y=0;$y<$hauteur;$y++){
@@ -73,13 +76,13 @@ function shikakugen($largeur,$hauteur,$nbeCarres){
                                 $count++;
                             }
                         }
-                        break 2;
+                        break 2; //le carré est placé, sert à rien de tester les autres cases.
                     }
                 }
             }
         }
         if($largeurRetenue==0){
-            //limpossibilité de placer le carré. retentons
+            //limpossibilité de placer le carré. retentons aec un autre tirage d'aires
             goto a;
         }
     }
