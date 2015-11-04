@@ -15,7 +15,20 @@ function shikakugen($largeur,$hauteur,$nbeCarres){
     //tirer en random l'aire de chaque carré
     $aireRestante=$largeur * $hauteur;
     for($i=1;$i<$nbeCarres;$i++){
-        $aire=rand(2,$aireRestante - $nbeCarres + $i);
+	
+	$aireOK=false;
+	while($aireOK==false){
+	  $aire=rand(2,$aireRestante - $nbeCarres + $i);
+	  //on va éliminer quelques valeurs.
+	  $aireOK=true;
+	  if((in_array($aire,array(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97))) 
+	      && ($aire>$largeur) 
+	      && ($aire>$hauteur)){
+	      //c'est un nombre premier don le seul carré posssible aura un coté =1 et l'autre coté= aire. si ce dernier coté est supérieur
+	      //aux cotés de la grille, on ne pourra jamais le placer.
+		$aireOK=false;
+	  }
+        }
         $aireParCarre[]=$aire;
         $aireRestante=$aireRestante-$aire;
         $diviseurs[$aire]=trouveDiviseurs($aire);
