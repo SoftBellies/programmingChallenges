@@ -21,3 +21,7 @@
 	path = wookie à poil dur/moul
 	url = https://github.com/moul/wookie
 	branch = master
+[submodule "shikaku/moul"]
+	path = shikaku/moul
+	url = https://github.com/moul/shikaku
+	branch = master
