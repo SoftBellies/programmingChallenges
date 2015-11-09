@@ -1,4 +1,18 @@
-<!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<?php
+if((isset($_POST['ia1URL'])) OR (isset($_POST['ia1URL']))){
+        if((filter_var($_POST['ia1URL'], FILTER_VALIDATE_URL))===false){
+                echo "erreur"; die;
+        }
+        if((filter_var($_POST['ia2URL'], FILTER_VALIDATE_URL))===false){
+         echo "erreur"; die;
+        }
+ if(!preg_match("/^(http|https):\/\//", $_POST['ia1URL'])) 
+	{echo "erreur"; die;} 
+  if(!preg_match("/^(http|https):\/\//", $_POST['ia2URL']))     
+        {echo "erreur"; die;} 
+ }
+
+?><!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="author" content="Gnieark"><meta name="viewport" content="width=device-width, initial-scale=1.0">	
 <title>Arbitre Morpion</title>
 <style type="text/css">
@@ -53,7 +67,7 @@ if(isset($_POST['submit'])){
                 echo "une erreur est survenue";
                 die;
         }
-       $playerRep=htmlentities(getIAResponse($playerCHAR,$playerURL,$grille));
+       $playerRep=getIAResponse($playerCHAR,$playerURL,$grille);
       	echo "Reponse: ".$playerRep."\n"; 
 	//tester la validité de la réponse
        if((isset($grille[$playerRep])) && ($grille[$playerRep]=="")){
@@ -128,7 +142,7 @@ function getIAResponse($youChar,$iaBaseUrl,$grille){
      $output = curl_exec($ch);
     // close curl resource to free up system resources
     curl_close($ch);   
-    return $output;
+    return htmlentities($output);
 }
 
 ?>
@@ -136,3 +150,4 @@ function getIAResponse($youChar,$iaBaseUrl,$grille){
 </section>
 </body>
 </html>
+
