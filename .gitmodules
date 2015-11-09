@@ -25,3 +25,7 @@
 	path = shikaku/moul
 	url = https://github.com/moul/shikaku
 	branch = master
+[submodule "morpionsFights/moul"]
+	path = morpionsFights/moul
+	url = https://github.com/moul/tictactoe
+	branch = master
