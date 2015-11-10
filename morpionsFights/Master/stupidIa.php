@@ -25,6 +25,6 @@ if (count($freeCases)==0){
 	die;
 }
 //have all parameters lets play the game
-//Stupid IA, juste random
+//Stupid IA, just random
 shuffle($freeCases);
 echo $freeCases[0];
