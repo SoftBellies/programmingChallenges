@@ -29,3 +29,6 @@
 	path = morpionsFights/moul
 	url = https://github.com/moul/tictactoe
 	branch = master
+[submodule "morpionsFights/gnieark"]
+	path = morpionsFights/gnieark
+	url = git@github.com:gnieark/tictactoeChallenge.git
