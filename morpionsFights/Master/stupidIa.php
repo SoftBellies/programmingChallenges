@@ -1,6 +1,13 @@
 <?php
+/*
+* Tic Tac Toe stupid IA
+* For programming challenge https://github.com/jeannedhack/programmingChallenges
+* Gnieark 2015 
+* licensed under the Do What the Fuck You Want to Public License http://www.wtfpl.net/
+*/
+
 $cases=array("0-0","0-1","0-2","1-0","1-1","1-2","2-0","2-1","2-2");
-//remplir l'array
+//filling array
 $freeCases=array();
 foreach($cases as $case){
 	if (!isset($_GET[$case])){
@@ -13,11 +20,11 @@ foreach($cases as $case){
 if(!isset($_GET['you'])){
 	echo "wrong parameters 2"; die;
 }
-//have all parameters lets play the game
-//Stupid IA, juste random
 if (count($freeCases)==0){
-	echo "error. la grille est déjà pleine enfoiré";
+	echo "error. Grid is full, beach!";
 	die;
 }
+//have all parameters lets play the game
+//Stupid IA, juste random
 shuffle($freeCases);
 echo $freeCases[0];
