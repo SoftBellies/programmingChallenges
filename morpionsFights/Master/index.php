@@ -1,16 +1,13 @@
 <?php
 if((isset($_POST['ia1URL'])) OR (isset($_POST['ia1URL']))){
-        if((filter_var($_POST['ia1URL'], FILTER_VALIDATE_URL))===false){
-                echo "erreur"; die;
-        }
-        if((filter_var($_POST['ia2URL'], FILTER_VALIDATE_URL))===false){
-         echo "erreur"; die;
-        }
- if(!preg_match("/^(http|https):\/\//", $_POST['ia1URL'])) 
-	{echo "erreur"; die;} 
-  if(!preg_match("/^(http|https):\/\//", $_POST['ia2URL']))     
+        if(
+        	((filter_var($_POST['ia1URL'], FILTER_VALIDATE_URL))===false)
+        	OR ((filter_var($_POST['ia2URL'], FILTER_VALIDATE_URL))===false)
+        	OR (!preg_match("/^(http|https):\/\//", $_POST['ia1URL'])) 
+        	OR (!preg_match("/^(http|https):\/\//", $_POST['ia2URL'])) 
+        )
         {echo "erreur"; die;} 
- }
+}
 
 ?><!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="author" content="Gnieark"><meta name="viewport" content="width=device-width, initial-scale=1.0">	
@@ -24,7 +21,6 @@ header p{display: block; width: 45%;color:#FFF; float: left;}
 section {border-bottom: 1px solid rgb(204, 204, 204); margin: 0 auto;overflow: hidden;width: 90%;}
 -->
 </style>
-
 </head>
 <body>
  <header><h1>Arène à morpions</h1></header>
