@@ -20,3 +20,5 @@ Just a place to save programming challenges
 - week 3: **2015/10/26** -> **2015/11/02**: [Wookie à poil dur](https://github.com/jeannedhack/programmingChallenges/tree/master/wookie%20%C3%A0%20poil%20dur)
 
 - week 4: **2015/11/02** -> **2015/11/09**: [Générateur de Shikaku](https://github.com/jeannedhack/programmingChallenges/tree/master/shikaku)
+
+- week 5: **2015/11/09** -> **2015/11/16**: [Morpions](https://github.com/jeannedhack/programmingChallenges/tree/master/morpionsFights)
