@@ -21,7 +21,7 @@ if(!isset($_GET['you'])){
 	echo "wrong parameters 2"; die;
 }
 if (count($freeCases)==0){
-	echo "error. Grid is full, beach!";
+	echo "error. Grid is full, bitch!";
 	die;
 }
 //have all parameters lets play the game
