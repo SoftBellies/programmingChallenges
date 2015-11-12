@@ -53,14 +53,11 @@ Vous pouvez tester le programme arbitre à l'adresse
 http://morpionMaster.tinad.fr (il détaille le résultat de chaque partie et
 permet un débug de vos retours).
 
-Vous renseignez l'URL de votre IA, et vous pouvez lui faire affronter...
-elle-même, ou mon IA stupide que j'ai codé juste pour pouvoir tester le
-programme arbitre http://morpionMaster.tinad.fr/stupidIa.php .
+Vous selectionnez les bots qui doivent s'affronter et cliquez sur fight.
 
-Ce dernier programme se contente de donner en réponse les coordonnées d'une case
-libre prise au hazard.
+Pour que votre IA soit ajoutée dans les listes, suivez les instructions données sur la page sus-nommée
 
-Les deux scripts PHP (IA débile et Master) sont dans le dossier morpionMaster.
+Les deux scripts PHP (IA débile et l'arbitre index.php) sont dans le dossier Master.
 
 ##Gagnants
 L'affrontement aura lieu lundi 16 novembre 2016.
