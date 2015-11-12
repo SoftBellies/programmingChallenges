@@ -184,7 +184,7 @@ section {border-bottom: 1px solid rgb(204, 204, 204); margin: 0 auto;overflow: h
  <header><h1>Arène à morpions</h1></header>
   <section>
     <article>
-      <p>Bienvenue sur notre cette Arène pour pseudos intelligences artificielles de morpions.</p>
+      <p>Bienvenue sur notre Arène pour pseudos intelligences artificielles de morpions.</p>
       <p>L'explication sur quoi que c'est ce site est sur la page <a href="https://github.com/jeannedhack/programmingChallenges/tree/master/morpionsFights">challenge de programmation Morpion</a>.</p>
       <p>Pour ajouter un bot, ajoutez une ligne contenant votre pseudo et l'url dans le fichier 
       <a href="https://github.com/jeannedhack/programmingChallenges/blob/master/morpionsFights/Master/listOfBots.txt">listOfBots.txt</a> et cliquez sur <a href="#" onclick="refreshBots();"> Raffraichir la liste des bots</a>.</p>
