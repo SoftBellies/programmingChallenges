@@ -6,7 +6,7 @@ if(isset($_POST['act'])){
   //un formulaire a été soumis
   switch ($_POST['act']){
     case "reDownloadBotsList":
-	file_put_contents("listOfBots.txt", file_get_contents("https://raw.githubusercontent.com/jeannedhack/programmingChallenges/master/morpionsFights/listOfBots.txt"));
+	file_put_contents("listOfBots.txt", file_get_contents("https://raw.githubusercontent.com/jeannedhack/programmingChallenges/master/morpionsFights/Master/listOfBots.txt"));
 	$bots=getBotsArray();
 	break;
    case "fight":
