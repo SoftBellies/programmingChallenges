@@ -68,7 +68,7 @@ if(isset($_POST['act'])){
 	      for($j=0;$j<3;$j++){
 		  echo "<tr>";
 		  for($i=0;$i<3;$i++){
-		      echo "<td>".$grille[$j."-".$i]."</td>";
+		      echo '<td class="cellj'.$j.' celli'.$i.'">'.$grille[$j.'-'.$i].'</td>';
 		  }
 		  echo "</tr>";
 	      }
@@ -134,6 +134,11 @@ header{background-color:#502FD2; width: 100%; overflow: hidden;height: auto;}
 header h1{display: block; font-size:300%; color:#FFF;float: left; width: 45%;font-family: 'Special Elite', cursive;margin-left: 5%;}
 header p{display: block; width: 45%;color:#FFF; float: left;}
 section {border-bottom: 1px solid rgb(204, 204, 204); margin: 0 auto;overflow: hidden;width: 90%;}
+td {min-width: 10px; height: 10px;}
+.cellj0{border-bottom: 1px dotted black;}
+.cellj2{border-top:1px dotted black;}
+.celli0{border-right:1px dotted black;}
+.celli2{border-left:1px dotted black;}
 -->
 </style>
 <script type="text/javascript">
@@ -184,7 +189,7 @@ section {border-bottom: 1px solid rgb(204, 204, 204); margin: 0 auto;overflow: h
  <header><h1>Arène à morpions</h1></header>
   <section>
     <article>
-      <p>Bienvenue sur notre Arène pour pseudos intelligences artificielles de morpions.</p>
+      <p>Bienvenue sur notre cette Arène pour pseudos intelligences artificielles de morpions.</p>
       <p>L'explication sur quoi que c'est ce site est sur la page <a href="https://github.com/jeannedhack/programmingChallenges/tree/master/morpionsFights">challenge de programmation Morpion</a>.</p>
       <p>Pour ajouter un bot, ajoutez une ligne contenant votre pseudo et l'url dans le fichier 
       <a href="https://github.com/jeannedhack/programmingChallenges/blob/master/morpionsFights/Master/listOfBots.txt">listOfBots.txt</a> et cliquez sur <a href="#" onclick="refreshBots();"> Raffraichir la liste des bots</a>.</p>
