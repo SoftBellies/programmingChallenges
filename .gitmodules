@@ -32,3 +32,7 @@
 [submodule "morpionsFights/gnieark"]
 	path = morpionsFights/gnieark
 	url = git@github.com:gnieark/tictactoeChallenge.git
+[submodule "sudoku/moul"]
+	path = sudoku/moul
+	url = https://github.com/moul/sudoku
+	branch = master

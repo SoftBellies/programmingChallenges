@@ -31,3 +31,13 @@ $ ./sudoku ./path/to/map.txt
 +-----------------+
 $
 ```
+
+## Winners
+
+1. [@xxx](https://github.com/xxx): `date`
+2. [@xxx](https://github.com/xxx): `date`
+2. [@xxx](https://github.com/xxx): `date`
+
+Hors jeu (créateur du challenge):
+
+- [@moul](https://github.com/moul): `date`
