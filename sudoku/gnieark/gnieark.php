@@ -5,29 +5,31 @@
 $linesByLines=explode("\n",file_get_contents("easy.txt"));
 $grilleNumber=-1;
 $i=-1;
-do{
-  $i++;
-}while (preg_match("/^\+-/", $linesByLines[$i])); //credit Zigazou pour cette ligne
-    
 
-//on est sur la ligne de bordure haute
-$grilleNumber++;
-$lineNumber=0;
-
-do{
-    $line=str_split(substr($linesByLines[$i],1,-1));
-    for($j=0;$j<count($line);$j=$j+2){
-      $grille[$grilleNumber][$lineNumber][]=$line[$j];
-    }
-    //echo "!!!".substr($linesByLines[$i],1,-1)."!!!\n";
-    
-    $lineNumber++;
+while($i<count($linesByLines)){
+  do{
     $i++;
-}while (!preg_match("/^\+-/", $linesByLines[$i]));
+  }while (preg_match("/^\+-/", $linesByLines[$i])); //credit Zigazou pour cette ligne
+      
 
-viewGrid(resolveSudoku($grille[$grilleNumber]));
+  //on est sur la ligne de bordure haute
+  $grilleNumber++;
+  $lineNumber=0;
 
+  do{
+      $line=str_split(substr($linesByLines[$i],1,-1));
+      for($j=0;$j<count($line);$j=$j+2){
+	$grille[$grilleNumber][$lineNumber][]=$line[$j];
+      }
+      //echo "!!!".substr($linesByLines[$i],1,-1)."!!!\n";
+      
+      $lineNumber++;
+      $i++;
+  }while (!preg_match("/^\+-/", $linesByLines[$i]));
 
+  viewGrid(resolveSudoku($grille[$grilleNumber]));
+
+}
 
 function resolveSudoku($grille){
    
