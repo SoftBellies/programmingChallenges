@@ -34,10 +34,10 @@ $
 
 ## Winners
 
-1. [@xxx](https://github.com/xxx): `date`
-2. [@xxx](https://github.com/xxx): `date`
+1. [@zigazou](https://github.com/zigazou): `2015/11/17 21:53:43`
+2. [@gnieark](https://github.com/gnieark): `2015/11/17 21:54:08`
 2. [@xxx](https://github.com/xxx): `date`
 
 Hors jeu (créateur du challenge):
 
-- [@moul](https://github.com/moul): `date`
+- [@moul](https://github.com/moul): `2015/11/17 00:08:48`
