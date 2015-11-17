@@ -39,3 +39,6 @@
 [submodule "sudoku/zigazou"]
 	path = sudoku/zigazou
 	url = https://github.com/zigazou/Sudoku
+[submodule "sudoku/gnieark"]
+	path = sudoku/gnieark
+	url = https://github.com/gnieark/sudoku.git
