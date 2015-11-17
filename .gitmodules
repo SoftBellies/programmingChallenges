@@ -36,3 +36,6 @@
 	path = sudoku/moul
 	url = https://github.com/moul/sudoku
 	branch = master
+[submodule "sudoku/zigazou"]
+	path = sudoku/zigazou
+	url = https://github.com/zigazou/Sudoku
