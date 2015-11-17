@@ -73,3 +73,7 @@ adversaires
   avantage d'une partie automatiquement gagnée en début de script.
 * En cas d'ex-aequo... on verra, à coup de shifumi.
 
+##Résultat:
+* Winner: @moul 
+* 2: Gnieark
+* 3: StupidAI
