@@ -1,34 +1,17 @@
 <?php
-
-
 //separer les map
-$linesByLines=explode("\n",file_get_contents("easy.txt"));
-$grilleNumber=-1;
-$i=-1;
-
-while($i<count($linesByLines)){
-  do{
-    $i++;
-  }while (preg_match("/^\+-/", $linesByLines[$i])); //credit Zigazou pour cette ligne
-      
-
-  //on est sur la ligne de bordure haute
-  $grilleNumber++;
-  $lineNumber=0;
-
-  do{
-      $line=str_split(substr($linesByLines[$i],1,-1));
-      for($j=0;$j<count($line);$j=$j+2){
-	$grille[$grilleNumber][$lineNumber][]=$line[$j];
-      }
-      //echo "!!!".substr($linesByLines[$i],1,-1)."!!!\n";
-      
-      $lineNumber++;
-      $i++;
-  }while (!preg_match("/^\+-/", $linesByLines[$i]));
-
-  viewGrid(resolveSudoku($grille[$grilleNumber]));
-
+$grids=explode("\n",str_replace(array("+-----------------+\n","|"),"",file_get_contents("easy.txt")));
+$grid=array();
+foreach($grids as $gridLine){
+    $lineArray=array();
+    for($i=0;$i<strlen($gridLine);$i=$i+2){
+        $lineArray[]=$gridLine[$i];
+    }
+    $grid[]=$lineArray;
+    if(count($grid)==9){
+         viewGrid(resolveSudoku($grid));
+         $grid=array();
+    }
 }
 
 function resolveSudoku($grille){
@@ -42,10 +25,8 @@ function resolveSudoku($grille){
             }
         }
     }
-
+  
     while( $numberOfFreeCases>0){
-
-    
        // echo $numberOfFreeCases."\n";
         //toutes les cases
         for ($y=0;$y<9;$y++){
@@ -85,16 +66,11 @@ function resolveSudoku($grille){
 			    }
 			}
                     }
-                    
-
             }
         }
       }
     }
-
     return $grille;
-
-
 }
 
 function listFreeCasesNearMe($x,$y,$grid){
