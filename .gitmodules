@@ -39,3 +39,6 @@
 [submodule "morpionsFights/gnieark"]
 	path = morpionsFights/gnieark
 	url = https://github.com/gnieark/tictactoeChallenge.git
+[submodule "sudoku/gnieark"]
+	path = sudoku/gnieark
+	url = https://github.com/gnieark/sudoku.git
