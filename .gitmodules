@@ -29,9 +29,6 @@
 	path = morpionsFights/moul
 	url = https://github.com/moul/tictactoe
 	branch = master
-[submodule "morpionsFights/gnieark"]
-	path = morpionsFights/gnieark
-	url = git@github.com:gnieark/tictactoeChallenge.git
 [submodule "sudoku/moul"]
 	path = sudoku/moul
 	url = https://github.com/moul/sudoku
@@ -42,3 +39,6 @@
 [submodule "sudoku/gnieark"]
 	path = sudoku/gnieark
 	url = https://github.com/gnieark/sudoku.git
+[submodule "morpionsFights/gnieark"]
+	path = morpionsFights/gnieark
+	url = https://github.com/gnieark/tictactoeChallenge.git
